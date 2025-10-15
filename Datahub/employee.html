@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Management - Data Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Employee Portal</h1>
+  <button onclick="window.location.href='index.html'">🏠 Home</button>
+
+  <div class="form-container">
+    <input type="text" id="empName" placeholder="Employee Name">
+    <input type="text" id="empDept" placeholder="Department">
+    <input type="text" id="empRole" placeholder="Designation">
+    <input type="text" id="empSalary" placeholder="Monthly Salary">
+    <button onclick="addEmployee()">Add</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>Salary</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="employeeTable"></tbody>
+  </table>
+
+  <script>
+    function addEmployee() {
+      const name = document.getElementById('empName').value;
+      const dept = document.getElementById('empDept').value;
+      const role = document.getElementById('empRole').value;
+      const salary = document.getElementById('empSalary').value;
+
+      if (!name || !dept || !role || !salary) {
+        alert('Please fill all fields!');
+        return;
+      }
+
+      const table = document.getElementById('employeeTable');
+      const row = table.insertRow();
+      row.innerHTML = `
+        <td>${name}</td>
+        <td>${dept}</td>
+        <td>${role}</td>
+        <td>${salary}</td>
+        <td>
+          <button onclick="editRow(this)">Edit</button>
+          <button onclick="deleteRow(this)">Delete</button>
+        </td>
+      `;
+
+      // clear inputs
+      document.getElementById('empName').value = '';
+      document.getElementById('empDept').value = '';
+      document.getElementById('empRole').value = '';
+      document.getElementById('empSalary').value = '';
+    }
+
+    function editRow(button) {
+      const row = button.parentElement.parentElement;
+      const cells = row.querySelectorAll('td');
+
+      document.getElementById('empName').value = cells[0].innerText;
+      document.getElementById('empDept').value = cells[1].innerText;
+      document.getElementById('empRole').value = cells[2].innerText;
+      document.getElementById('empSalary').value = cells[3].innerText;
+
+      row.remove();
+    }
+
+    function deleteRow(button) {
+      button.parentElement.parentElement.remove();
+    }
+  </script>
+</body>
+</html>

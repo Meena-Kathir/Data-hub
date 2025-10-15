@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #04244b;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: rgb(255, 255, 255);
+  }
+  
+  nav {
+    margin-bottom: 20px;
+  }
+  
+  nav button {
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #1f1b1b;
+    color: rgb(117, 103, 103);
+    animation: bounce 0.5s;
+  }
+  
+ 
+  .section {
+    display: none;
+  }
+  
+  .section.active {
+    display: block;
+  }
+  
+  .form-container {
+    margin: 10px;
+  }
+  
+  input {
+    padding: 8px;
+    margin: 5px;
+  }
+  
+  button {
+    padding: 8px 10px;
+    margin: 5px;
+    
+  }
+  
+  table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+  }
+    
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .options-container button {
+    width: 200px; 
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  /* Table heading */
+th {
+    color: gold;
+    background-color:#04244b; 
+}
+  /* Table data/details */
+  td {
+    color: white;
+    background-color: #04244b; 
+  } 
+  /* Optional: Table border styling */
+  table, th, td {
+    border: 1px solid rgb(247, 190, 6);
+    border-collapse: collapse;
+    padding: 8px;
+  }

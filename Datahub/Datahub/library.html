@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library Management - Data Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Book Portal</h1>
+  <button onclick="window.location.href='index.html'">🏠 Back</button>
+
+  <div class="form-container">
+    <input type="text" id="bookTitle" placeholder="Title">
+    <input type="text" id="bookYear" placeholder="Year">
+    <button onclick="addBook()">Add</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="bookTable"></tbody>
+  </table>
+
+  <script>
+    function addBook() {
+      const title = document.getElementById('bookTitle').value;
+      const year = document.getElementById('bookYear').value;
+
+      if (!title || !year) {
+        alert('Please fill in all fields!');
+        return;
+      }
+
+      const table = document.getElementById('bookTable');
+      const row = table.insertRow();
+      row.innerHTML = `
+        <td>${title}</td>
+        <td>${year}</td>
+        <td>
+          <button onclick="editBook(this)">Edit</button>
+          <button onclick="deleteBook(this)">Delete</button>
+        </td>
+      `;
+
+      // clear inputs
+      document.getElementById('bookTitle').value = '';
+      document.getElementById('bookYear').value = '';
+    }
+
+    function editBook(button) {
+      const row = button.parentElement.parentElement;
+      const cells = row.querySelectorAll('td');
+
+      document.getElementById('bookTitle').value = cells[0].innerText;
+      document.getElementById('bookYear').value = cells[1].innerText;
+
+      row.remove();
+    }
+
+    function deleteBook(button) {
+      button.parentElement.parentElement.remove();
+    }
+  </script>
+</body>
+</html>
